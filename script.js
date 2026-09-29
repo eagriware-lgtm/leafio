@@ -1,0 +1,6 @@
+const loader=document.getElementById("loader");window.addEventListener("load",()=>setTimeout(()=>loader.classList.add("hide"),650));
+const theme=document.getElementById("theme");theme.addEventListener("click",()=>{document.body.classList.toggle("light");theme.textContent=document.body.classList.contains("light")?"☾":"☼";localStorage.setItem("leafio-theme",document.body.classList.contains("light")?"light":"dark")});if(localStorage.getItem("leafio-theme")==="light"){document.body.classList.add("light");theme.textContent="☾"}
+const menu=document.getElementById("menu");menu.addEventListener("click",()=>{document.querySelector("nav").classList.toggle("open")});
+document.querySelectorAll(".filters button").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");const f=btn.dataset.filter;document.querySelectorAll(".item").forEach(x=>x.style.display=f==="all"||x.dataset.type===f?"block":"none")}));
+document.getElementById("contactForm").addEventListener("submit",e=>{e.preventDefault();document.getElementById("formMsg").textContent="Thanks — your message is ready to be connected to Leafio.";e.target.reset()});
+document.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>document.querySelector("nav").classList.remove("open")));

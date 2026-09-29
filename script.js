@@ -46,3 +46,23 @@ document.getElementById("contactForm").addEventListener("submit",e=>{
 });
 
 document.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>document.querySelector("nav").classList.remove("open")));
+
+const readMore=document.getElementById("readMore");
+const storyModal=document.getElementById("storyModal");
+const storyClose=document.getElementById("storyClose");
+function closeStory(){
+  if(!storyModal) return;
+  storyModal.classList.remove("show");
+  storyModal.setAttribute("aria-hidden","true");
+  document.body.classList.remove("modal-open");
+}
+if(readMore && storyModal){
+  readMore.addEventListener("click",()=>{
+    storyModal.classList.add("show");
+    storyModal.setAttribute("aria-hidden","false");
+    document.body.classList.add("modal-open");
+  });
+  storyClose.addEventListener("click",closeStory);
+  storyModal.querySelector("[data-close-story]").addEventListener("click",closeStory);
+  document.addEventListener("keydown",e=>{if(e.key==="Escape") closeStory()});
+}

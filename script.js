@@ -17,12 +17,16 @@ setTimeout(hideLoader,2500);
 const theme=document.getElementById("theme");
 theme.addEventListener("click",()=>{
   document.body.classList.toggle("light");
+  document.body.classList.toggle("dark",!document.body.classList.contains("light"));
   theme.textContent=document.body.classList.contains("light")?"☾":"☼";
   localStorage.setItem("leafio-theme",document.body.classList.contains("light")?"light":"dark")
 });
 if(localStorage.getItem("leafio-theme")==="light"){
   document.body.classList.add("light");
+  document.body.classList.remove("dark");
   theme.textContent="☾"
+}else{
+  document.body.classList.add("dark");
 }
 
 const menu=document.getElementById("menu");
